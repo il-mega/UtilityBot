@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'xyz.mega'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://m2.dv8tion.net/releases' }
+    maven { url 'https://jitpack.io' }
+}
+
+ext.jdaVersion = 'feature~slash-commands'
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation("com.github.DV8FromTheWorld:JDA:$jdaVersion") {
+        exclude module: 'opus-java'
+    }
+
+    implementation("com.google.guava:guava:30.1.1-jre")
+}
+
+test {
+    useJUnitPlatform()
+}
